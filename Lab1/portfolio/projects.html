@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Developer Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Dark Mode Toggle (CSS Only) -->
+    <input type="checkbox" id="dark-mode-toggle" class="dark-mode-checkbox">
+    <label for="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </label>
+
+    <!-- Back to Top Link -->
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <!-- Header với logo và menu điều hướng -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Portfolio<span>.</span></a>
+            
+            <!-- Checkbox ẩn cho mobile menu (không cần JS) -->
+            <input type="checkbox" id="mobile-menu-checkbox">
+            
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                
+                <label for="mobile-menu-checkbox" class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </label>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Projects</span>
+            </nav>
+            <h1 class="page-title">My Projects</h1>
+            <p class="page-subtitle">Projects I have completed over time</p>
+        </div>
+    </section>
+
+    <!-- Projects Filter (CSS Only) -->
+    <!-- Radio buttons must be outside for CSS sibling selector to work -->
+    <input type="radio" name="project-filter" id="filter-all" class="filter-radio" checked>
+    <input type="radio" name="project-filter" id="filter-web" class="filter-radio">
+    <input type="radio" name="project-filter" id="filter-app" class="filter-radio">
+    <input type="radio" name="project-filter" id="filter-uiux" class="filter-radio">
+    
+    <section class="projects-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <label for="filter-all" class="filter-btn">All</label>
+                <label for="filter-web" class="filter-btn">Website</label>
+                <label for="filter-app" class="filter-btn">App</label>
+                <label for="filter-uiux" class="filter-btn">UI/UX Design</label>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="projects-grid">
+        <div class="container">
+            <div class="projects-container">
+                <!-- Project 1 -->
+                <div class="project-item" data-category="web" id="project1">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-shopping-cart"></i>
+                            <div class="project-overlay">
+                                <a href="#" class="project-view">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">E-commerce Website</h3>
+                            <p class="project-description">
+                                Full-featured e-commerce website with shopping cart, checkout, and product management.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link">View Demo</a>
+                                <a href="#" class="project-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-item" data-category="app" id="project2">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-plane"></i>
+                            <div class="project-overlay">
+                                <a href="#" class="project-view">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Travel App</h3>
+                            <p class="project-description">
+                                Mobile travel booking app with full search, booking, and review features.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React Native</span>
+                                <span class="tech-tag">Firebase</span>
+                                <span class="tech-tag">Google Maps API</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link">View Demo</a>
+                                <a href="#" class="project-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-item" data-category="uiux">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-paint-brush"></i>
+                            <div class="project-overlay">
+                                <a href="#" class="project-view">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Banking App UI</h3>
+                            <p class="project-description">
+                                User interface design for a mobile banking app with a focus on user experience.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Figma</span>
+                                <span class="tech-tag">UI Design</span>
+                                <span class="tech-tag">Prototyping</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link">View Design</a>
+                                <a href="#" class="project-link">Prototype</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-item" data-category="web">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-newspaper"></i>
+                            <div class="project-overlay">
+                                <a href="#" class="project-view">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">News Portal</h3>
+                            <p class="project-description">
+                                News website with content management system, article categorization, and search functionality.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">Express</span>
+                                <span class="tech-tag">MySQL</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link">View Demo</a>
+                                <a href="#" class="project-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-item" data-category="app">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-dumbbell"></i>
+                            <div class="project-overlay">
+                                <a href="#" class="project-view">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Fitness Tracker</h3>
+                            <p class="project-description">
+                                Fitness tracking app with workout planning, progress tracking, and statistics features.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React Native</span>
+                                <span class="tech-tag">Redux</span>
+                                <span class="tech-tag">Chart.js</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link">View Demo</a>
+                                <a href="#" class="project-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-item" data-category="uiux">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-heartbeat"></i>
+                            <div class="project-overlay">
+                                <a href="#" class="project-view">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Health App UI/UX</h3>
+                            <p class="project-description">
+                                User interface and user experience design for a personal health care app.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Figma</span>
+                                <span class="tech-tag">UX Research</span>
+                                <span class="tech-tag">Wireframing</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link">View Design</a>
+                                <a href="#" class="project-link">Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Have any project in mind?</h2>
+                <p class="cta-description">
+                    Contact me to discuss your ideas and find the best solution.
+                </p>
+                <a href="contact.html" class="btn btn-primary btn-large">Contact Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3 class="footer-logo">Portfolio<span>.</span></h3>
+                    <p class="footer-description">
+                        Frontend Developer with a passion for creating beautiful interfaces, excellent user experiences, and quality code.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-envelope"></i> contact@portfolio.dev</li>
+                        <li><i class="fas fa-phone"></i> (+84) 123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Hanoi, Vietnam</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Portfolio. All rights reserved.</p>
+                <p>Created by Frontend Developer</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

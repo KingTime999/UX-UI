@@ -2,11 +2,7 @@
 
 A modern, responsive portfolio website built with HTML, CSS, and JavaScript featuring smooth animations, dark mode, and interactive components.
 
-## 🌐 Live Demo
-
-**Visit the live website:** [https://kingtime999.github.io/UX-UI/](https://kingtime999.github.io/UX-UI/)
-
-## 🎨 Enhanced Features
+##  Enhanced Features
 
 ### ✨ Interface & Design
 - **Gradient Colors**: Modern gradient colors for buttons and hover effects
@@ -192,11 +188,6 @@ Lab1/
 - Checkbox hack for interactivity
 - `@keyframes` animations
 - `transform` & `opacity` for performance optimization
-
-## 🔗 Links
-
-- **Live Website:** [https://kingtime999.github.io/UX-UI/](https://kingtime999.github.io/UX-UI/)
-- **GitHub Repository:** [https://github.com/KingTime999/UX-UI](https://github.com/KingTime999/UX-UI)
 
 ---
 Created with ❤️ by Le Tan Nguyen

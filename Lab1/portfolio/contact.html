@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Developer Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="contact-page">
+    <!-- Dark Mode Toggle (CSS Only) -->
+    <input type="checkbox" id="dark-mode-toggle" class="dark-mode-checkbox">
+    <label for="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </label>
+
+    <!-- Back to Top Link -->
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <!-- Header với logo và menu điều hướng -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Portfolio<span>.</span></a>
+            
+            <!-- Checkbox ẩn cho mobile menu (không cần JS) -->
+            <input type="checkbox" id="mobile-menu-checkbox">
+            
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+                
+                <label for="mobile-menu-checkbox" class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </label>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Contact</span>
+            </nav>
+            <h1 class="page-title">Contact Me</h1>
+            <p class="page-subtitle">Feel free to reach out if you have any questions or projects to discuss</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h2 class="contact-title">Contact Information</h2>
+                    <p class="contact-description">
+                        I'm always ready to discuss new projects, creative ideas, or collaboration opportunities.
+                    </p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Address</h3>
+                                <p>123 ABC Street, XYZ District, Hanoi, Vietnam</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Phone</h3>
+                                <p>(+84) 123 456 789</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Email</h3>
+                                <p>contact@portfolio.dev</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Working Hours</h3>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-contact">
+                        <h3>Connect with me</h3>
+                        <div class="social-links">
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h2 class="contact-title">Send Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        
+                        <div class="form-notice">
+                            <p><small>* Required fields</small></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">My Location</h2>
+            <div class="map-placeholder">
+                <div class="map-content">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Hanoi, Vietnam</h3>
+                    <p>The area where I live and work</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Some common questions about my services</p>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <input type="checkbox" id="faq1" class="faq-checkbox">
+                    <label for="faq1" class="faq-question">
+                        <h3>Can I hire you for freelance projects?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </label>
+                    <div class="faq-answer">
+                        <p>Yes, I accept freelance projects. Please contact me through the form above or via email to discuss your project details.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <input type="checkbox" id="faq2" class="faq-checkbox">
+                    <label for="faq2" class="faq-question">
+                        <h3>How long does it take to complete a typical web project?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </label>
+                    <div class="faq-answer">
+                        <p>The timeline depends on the project's complexity. A corporate website typically takes 2-3 weeks, while a complex web application can take 1-3 months.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <input type="checkbox" id="faq3" class="faq-checkbox">
+                    <label for="faq3" class="faq-question">
+                        <h3>Do you provide website maintenance services?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </label>
+                    <div class="faq-answer">
+                        <p>Yes, I offer website maintenance packages including updates, backups, security, and technical support. Contact me for more details about service packages.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3 class="footer-logo">Portfolio<span>.</span></h3>
+                    <p class="footer-description">
+                        Frontend Developer passionate about creating beautiful interfaces, excellent user experiences, and quality code.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-envelope"></i> contact@portfolio.dev</li>
+                        <li><i class="fas fa-phone"></i> (+84) 123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Hanoi, Vietnam</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Portfolio. All rights reserved.</p>
+                <p>Created by Frontend Developer</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

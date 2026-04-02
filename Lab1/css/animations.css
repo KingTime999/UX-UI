@@ -1,0 +1,478 @@
+/* ===========================
+   CSS-ONLY ANIMATIONS & EFFECTS
+   =========================== */
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hide checkbox for dark mode */
+.dark-mode-checkbox {
+    display: none;
+}
+
+/* Fade in animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Floating animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Gradient animation */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Apply animations */
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.fade-in-down {
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.fade-in-left {
+    animation: fadeInLeft 0.8s ease-out;
+}
+
+.fade-in-right {
+    animation: fadeInRight 0.8s ease-out;
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.scale-in {
+    animation: scaleIn 0.8s ease-out;
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* Back to Top Link (CSS Only) */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+    z-index: 999;
+    text-decoration: none;
+    animation: fadeInUp 0.5s ease 2s both;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* Dark Mode Toggle (CSS Only) */
+.theme-toggle {
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--white);
+    border: 2px solid var(--gray-color);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--dark-color);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    z-index: 998;
+}
+
+.theme-toggle:hover {
+    transform: rotate(180deg);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Light mode shows sun, dark mode shows moon */
+.theme-toggle .fa-moon {
+    display: none;
+}
+
+.theme-toggle .fa-sun {
+    display: block;
+}
+
+/* Dark Mode using CSS checkbox */
+.dark-mode-checkbox:checked ~ .theme-toggle .fa-sun {
+    display: none;
+}
+
+.dark-mode-checkbox:checked ~ .theme-toggle .fa-moon {
+    display: block;
+}
+
+.dark-mode-checkbox:checked ~ * {
+    --primary-color: #8b9aff;
+    --primary-dark: #7b8aef;
+    --primary-light: #1a1d2e;
+    --secondary-color: #c5d0e8;
+    --light-color: #1e2139;
+    --dark-color: #f5f7fa;
+    --gray-color: #2a2d47;
+    --gray-dark: #8892b0;
+    --white: #0f1119;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+.dark-mode-checkbox:checked ~ .header {
+    background-color: #0f1119;
+    border-bottom: 1px solid #2a2d47;
+}
+
+.dark-mode-checkbox:checked ~ .theme-toggle {
+    background: #1e2139;
+    border-color: #2a2d47;
+    color: #f5f7fa;
+}
+
+/* Improve text readability in dark mode */
+.dark-mode-checkbox:checked ~ * h1,
+.dark-mode-checkbox:checked ~ * h2,
+.dark-mode-checkbox:checked ~ * h3,
+.dark-mode-checkbox:checked ~ * h4,
+.dark-mode-checkbox:checked ~ * h5,
+.dark-mode-checkbox:checked ~ * h6 {
+    color: #f5f7fa;
+}
+
+.dark-mode-checkbox:checked ~ * p,
+.dark-mode-checkbox:checked ~ * li,
+.dark-mode-checkbox:checked ~ * span {
+    color: #c5d0e8;
+}
+
+.dark-mode-checkbox:checked ~ * .hero-description,
+.dark-mode-checkbox:checked ~ * .section-subtitle,
+.dark-mode-checkbox:checked ~ * .page-subtitle {
+    color: #c5d0e8;
+}
+
+.dark-mode-checkbox:checked ~ * .skill-description,
+.dark-mode-checkbox:checked ~ * .project-description,
+.dark-mode-checkbox:checked ~ * .about-description,
+.dark-mode-checkbox:checked ~ * .timeline-description {
+    color: #b8c5e0;
+}
+
+/* Contact page specific improvements for dark mode */
+.dark-mode-checkbox:checked ~ * .contact-title,
+.dark-mode-checkbox:checked ~ * .contact-description {
+    color: #f5f7fa !important;
+}
+
+.dark-mode-checkbox:checked ~ * .contact-text h3 {
+    color: #f5f7fa !important;
+    font-weight: 600;
+}
+
+.dark-mode-checkbox:checked ~ * .contact-text p {
+    color: #d0ddf5 !important;
+}
+
+.dark-mode-checkbox:checked ~ * .contact-icon {
+    color: #8b9aff !important;
+}
+
+.dark-mode-checkbox:checked ~ * .contact-icon i {
+    color: #8b9aff !important;
+}
+
+.dark-mode-checkbox:checked ~ * .social-contact h3 {
+    color: #f5f7fa !important;
+}
+
+.dark-mode-checkbox:checked ~ * .form-label {
+    color: #f5f7fa !important;
+    font-weight: 500;
+}
+
+.dark-mode-checkbox:checked ~ * .form-group input,
+.dark-mode-checkbox:checked ~ * .form-group textarea {
+    background-color: #252940 !important;
+    border-color: #3d4266 !important;
+    color: #f5f7fa !important;
+}
+
+.dark-mode-checkbox:checked ~ * .form-group input::placeholder,
+.dark-mode-checkbox:checked ~ * .form-group textarea::placeholder {
+    color: #9ba3bf !important;
+}
+
+.dark-mode-checkbox:checked ~ * .form-group input:focus,
+.dark-mode-checkbox:checked ~ * .form-group textarea:focus {
+    border-color: #8b9aff !important;
+    background-color: #2d3349 !important;
+    box-shadow: 0 0 0 3px rgba(139, 154, 255, 0.15) !important;
+}
+
+.dark-mode-checkbox:checked ~ * .form-notice {
+    color: #b8c5e0 !important;
+}
+
+.dark-mode-checkbox:checked ~ * .faq-question h3 {
+    color: #f5f7fa !important;
+}
+
+.dark-mode-checkbox:checked ~ * .faq-answer p {
+    color: #d0ddf5 !important;
+}
+
+.dark-mode-checkbox:checked ~ * .page-title {
+    color: #f5f7fa !important;
+}
+
+.dark-mode-checkbox:checked ~ * .breadcrumb-nav a,
+.dark-mode-checkbox:checked ~ * .breadcrumb-nav span {
+    color: #d0ddf5 !important;
+}
+
+/* CSS Tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.85rem;
+}
+
+.tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Card hover effects */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Button ripple effect (CSS only) */
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ripple::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-ripple:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* ===========================
+   CONTACT PAGE DARK MODE FIXES
+   =========================== */
+
+/* Override dark mode backgrounds for contact page elements */
+.dark-mode-checkbox:checked ~ * .contact-page section,
+.contact-page .dark-mode-checkbox:checked ~ section {
+    background-color: #1a1d2e !important;
+}
+
+.dark-mode-checkbox:checked ~ * .contact-page .faq-item,
+.contact-page .dark-mode-checkbox:checked ~ * .faq-item {
+    background-color: #232740 !important;
+}
+
+.dark-mode-checkbox:checked ~ * .contact-page .contact-form,
+.contact-page .dark-mode-checkbox:checked ~ * .contact-form {
+    background-color: #232740 !important;
+}
+
+.dark-mode-checkbox:checked ~ * .contact-page .form-group input,
+.dark-mode-checkbox:checked ~ * .contact-page .form-group textarea,
+.contact-page .dark-mode-checkbox:checked ~ * .form-group input,
+.contact-page .dark-mode-checkbox:checked ~ * .form-group textarea {
+    background-color: #2d3250 !important;
+    color: #e8eaf0 !important;
+    border-color: #3d4363 !important;
+}
+
+.dark-mode-checkbox:checked ~ * .contact-page .breadcrumb,
+.contact-page .dark-mode-checkbox:checked ~ .breadcrumb {
+    background-color: #232740 !important;
+}
+
+.dark-mode-checkbox:checked ~ * .contact-page .map-section,
+.contact-page .dark-mode-checkbox:checked ~ * .map-section {
+    background-color: #232740 !important;
+}
+
+/* ===========================
+   ABOUT PAGE DARK MODE FIXES
+   =========================== */
+
+/* Override dark mode backgrounds for about page elements */
+.dark-mode-checkbox:checked ~ * .about-page section,
+.about-page .dark-mode-checkbox:checked ~ section {
+    background-color: #1a1d2e !important;
+}
+
+.dark-mode-checkbox:checked ~ * .about-page .timeline-content,
+.about-page .dark-mode-checkbox:checked ~ * .timeline-content {
+    background-color: #232740 !important;
+}
+
+.dark-mode-checkbox:checked ~ * .about-page .category,
+.about-page .dark-mode-checkbox:checked ~ * .category {
+    background-color: #232740 !important;
+}
+
+.dark-mode-checkbox:checked ~ * .about-page .breadcrumb,
+.about-page .dark-mode-checkbox:checked ~ .breadcrumb {
+    background-color: #232740 !important;
+}

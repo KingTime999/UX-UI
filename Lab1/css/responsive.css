@@ -1,0 +1,241 @@
+/* Responsive styles cho tất cả các thiết bị */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    .hero .container,
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .hero-image,
+    .about-image {
+        order: -1;
+        margin-bottom: 30px;
+    }
+    
+    .image-placeholder {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .image-placeholder.large {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .image-placeholder i {
+        font-size: 8rem;
+    }
+    
+    .projects-showcase,
+    .projects-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    .skills-categories {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 540px;
+    }
+    
+    /* Mobile menu with checkbox trick - no JavaScript needed */
+    .header .container {
+        position: relative;
+    }
+    
+    #mobile-menu-checkbox {
+        display: none;
+    }
+    
+    .nav-list {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: var(--shadow);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 999;
+    }
+    
+    #mobile-menu-checkbox:checked ~ nav .nav-list {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    #mobile-menu-checkbox:checked ~ nav .mobile-menu-toggle .fa-bars {
+        display: none;
+    }
+    
+    #mobile-menu-checkbox:checked ~ nav .mobile-menu-toggle .fa-times {
+        display: inline-block;
+    }
+    
+    .mobile-menu-toggle .fa-times {
+        display: none;
+    }
+    
+    .nav-list li {
+        margin: 10px 0;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .about-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline::before {
+        left: 0;
+    }
+    
+    .timeline-item {
+        padding-left: 50px;
+    }
+    
+    .timeline-item::before {
+        left: -6px;
+    }
+    
+    .timeline-date {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .timeline-content {
+        padding: 20px;
+    }
+    
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+    
+    .hero {
+        padding-top: 120px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+    }
+    
+    .skills-grid,
+    .projects-showcase,
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .filter-buttons {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    
+    .filter-btn {
+        white-space: nowrap;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-title {
+        font-size: 2rem;
+    }
+    
+    .cta-description {
+        font-size: 1rem;
+    }
+    
+    /* Adjust theme toggle and back to top for mobile */
+    .theme-toggle {
+        right: 15px;
+        top: 90px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+    
+    /* Toast notifications on mobile */
+    .toast {
+        min-width: 280px;
+        right: 15px;
+        bottom: 20px;
+        font-size: 0.9rem;
+    }
+}

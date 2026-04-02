@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Developer Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="about-page">
+    <!-- Dark Mode Toggle (CSS Only) -->
+    <input type="checkbox" id="dark-mode-toggle" class="dark-mode-checkbox">
+    <label for="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </label>
+
+    <!-- Back to Top Link -->
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <!-- Header với logo và menu điều hướng -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Portfolio<span>.</span></a>
+            
+            <!-- Checkbox ẩn cho mobile menu (không cần JS) -->
+            <input type="checkbox" id="mobile-menu-checkbox">
+            
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                
+                <label for="mobile-menu-checkbox" class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </label>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>About</span>
+            </nav>
+            <h1 class="page-title">About Me</h1>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-placeholder large">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">Le Tan Nguyen</h2>
+                    <h3 class="about-subtitle">Frontend Developer</h3>
+                    <p class="about-description">
+                        I am a Frontend Developer with over 3 years of experience in developing modern and responsive web interfaces. I am passionate about creating excellent user experiences and always keeping up with the latest technologies.
+                    </p>
+                    <p class="about-description">
+                        With in-depth knowledge of HTML5, CSS3, JavaScript and frameworks like React, I have the ability to turn design ideas into high-quality web products.
+                    </p>
+                    
+                    <div class="about-info">
+                        <div class="info-item">
+                            <span class="info-label">Age:</span>
+                            <span class="info-value">28</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Location:</span>
+                            <span class="info-value">Hanoi, Vietnam</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Email:</span>
+                            <span class="info-value">contact@portfolio.dev</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Specialization:</span>
+                            <span class="info-value">Frontend Development</span>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="btn btn-primary">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-subtitle">My career development journey</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 - Present</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Senior Frontend Developer</h3>
+                        <h4 class="timeline-company">Tech Solutions Company</h4>
+                        <p class="timeline-description">
+                            Developing and maintaining web applications for large clients, optimizing performance and user experience.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2021</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Frontend Developer</h3>
+                        <h4 class="timeline-company">Web Studio Company</h4>
+                        <p class="timeline-description">
+                            Designing and developing user interfaces for website and web application projects.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2017 - 2019</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Web Developer</h3>
+                        <h4 class="timeline-company">Digital Agency Company</h4>
+                        <p class="timeline-description">
+                            Developing websites for small and medium business clients, SEO optimization.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-detailed" id="skills">
+        <div class="container">
+            <h2 class="section-title">Detailed Skills</h2>
+            <p class="section-subtitle">Technologies and tools I use</p>
+            
+            <div class="skills-categories">
+                <div class="category">
+                    <h3 class="category-title">Frontend</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">HTML5</span>
+                            <div class="skill-level">
+                                <div class="level-bar" style="width: 95%"></div>
+                            </div>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">CSS3/SASS</span>
+                            <div class="skill-level">
+                                <div class="level-bar" style="width: 90%"></div>
+                            </div>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-level">
+                                <div class="level-bar" style="width: 90%"></div>
+                            </div>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">React.js</span>
+                            <div class="skill-level">
+                                <div class="level-bar" style="width: 85%"></div>
+                            </div>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <h3 class="category-title">Tools & Others</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Git/GitHub</span>
+                            <div class="skill-level">
+                                <div class="level-bar" style="width: 88%"></div>
+                            </div>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Figma</span>
+                            <div class="skill-level">
+                                <div class="level-bar" style="width: 80%"></div>
+                            </div>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Webpack</span>
+                            <div class="skill-level">
+                                <div class="level-bar" style="width: 75%"></div>
+                            </div>
+                            <span class="skill-percent">75%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Responsive Design</span>
+                            <div class="skill-level">
+                                <div class="level-bar" style="width: 98%"></div>
+                            </div>
+                            <span class="skill-percent">98%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3 class="footer-logo">Portfolio<span>.</span></h3>
+                    <p class="footer-description">
+                        Frontend Developer passionate about creating beautiful interfaces, excellent user experiences, and quality code.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-envelope"></i> contact@portfolio.dev</li>
+                        <li><i class="fas fa-phone"></i> (+84) 123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Hanoi, Vietnam</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Portfolio. All rights reserved.</p>
+                <p>Created by Frontend Developer</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

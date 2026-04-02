@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartBin AI – Smart Waste Management</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Bootstrap Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    rel="stylesheet"
+  />
+  <!-- Google Fonts: Poppins -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- ═══════════════════════════════════════
+       INTERNAL CSS
+  ═══════════════════════════════════════ -->
+  <style>
+    /* ── Reset & Base ────────────────────── */
+    *,
+    *::before,
+    *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #1a1a2e;
+      background: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* ── CSS Variables ───────────────────── */
+    :root {
+      --primary:        #4A90E2;
+      --primary-dark:   #357abd;
+      --primary-light:  rgba(74, 144, 226, 0.10);
+      --primary-glow:   rgba(74, 144, 226, 0.35);
+      --dark:           #1a1a2e;
+      --dark-footer:    #0f1629;
+      --text-muted:     #6b7280;
+      --border:         #e8edf5;
+      --radius-sm:      10px;
+      --radius-md:      16px;
+      --radius-lg:      20px;
+      --radius-xl:      28px;
+      --shadow-sm:      0 4px 20px rgba(0,0,0,.06);
+      --shadow-md:      0 8px 30px rgba(0,0,0,.10);
+      --shadow-blue:    0 12px 40px rgba(74,144,226,.18);
+      --shadow-blue-lg: 0 20px 60px rgba(74,144,226,.35);
+    }
+
+    /* ── Utility helpers ─────────────────── */
+    .section-badge {
+      display: inline-block;
+      padding: .35rem 1rem;
+      border-radius: 50px;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+
+    .section-title span { color: var(--primary); }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* ── Navbar ──────────────────────────── */
+    #mainNav {
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid #f0f4f8;
+      box-shadow: 0 2px 20px rgba(74,144,226,.08);
+      padding: .75rem 0;
+      transition: box-shadow .3s;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--dark) !important;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-icon i { color: #fff; font-size: .9rem; }
+
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      font-size: .9rem;
+      color: #555 !important;
+      padding: .4rem .75rem !important;
+      transition: color .2s;
+    }
+
+    .navbar-nav .nav-link:hover { color: var(--primary) !important; }
+
+    .btn-nav-cta {
+      background: var(--primary);
+      color: #fff !important;
+      font-weight: 600;
+      font-size: .875rem;
+      padding: .45rem 1.25rem;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px var(--primary-glow);
+      transition: opacity .2s, transform .2s, box-shadow .2s;
+      border: none;
+    }
+
+    .btn-nav-cta:hover {
+      opacity: .9;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px var(--primary-glow);
+    }
+
+    /* ── Hero ────────────────────────────── */
+    #home {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f0f6ff 0%, #ffffff 60%, #e8f4fd 100%);
+      display: flex;
+      align-items: center;
+      padding-top: 4.5rem;
+    }
+
+    .hero-inner { padding: 6rem 0; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .35rem 1rem;
+      border-radius: 50px;
+      background: var(--primary-light);
+      border: 1px solid rgba(74,144,226,.25);
+      color: var(--primary);
+      font-size: .8rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .6; transform: scale(1.15); }
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title span { color: var(--primary); }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 1.75rem;
+      max-width: 480px;
+    }
+
+    /* Stats row */
+    .hero-stats { display: flex; gap: 2rem; margin-bottom: 2.25rem; flex-wrap: wrap; }
+
+    .hero-stat-value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.1;
+    }
+
+    .hero-stat-label {
+      font-size: .78rem;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    /* Hero buttons */
+    .btn-primary-hero {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: .95rem;
+      padding: .8rem 1.8rem;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 0 8px 25px var(--primary-glow);
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      transition: opacity .2s, transform .2s;
+      text-decoration: none;
+    }
+
+    .btn-primary-hero:hover { opacity: .9; transform: translateY(-2px); color: #fff; }
+
+    .btn-secondary-hero {
+      background: transparent;
+      color: #555;
+      font-weight: 600;
+      font-size: .95rem;
+      padding: .8rem 1.8rem;
+      border-radius: 50px;
+      border: 2px solid #ddd;
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      transition: border-color .2s, color .2s;
+      text-decoration: none;
+    }
+
+    .btn-secondary-hero:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* Hero image card */
+    .hero-img-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
+    .hero-blob-1 {
+      width: 320px; height: 320px;
+      background: rgba(74,144,226,.18);
+      top: 5%; right: 0;
+    }
+
+    .hero-blob-2 {
+      width: 200px; height: 200px;
+      background: rgba(116,185,255,.14);
+      bottom: 5%; left: 0;
+    }
+
+    .hero-card {
+      position: relative;
+      z-index: 2;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(74,144,226,.25);
+      max-width: 440px;
+      width: 100%;
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-overlay-card {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      background: rgba(255,255,255,.93);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 1rem 1.1rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,.1);
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .overlay-icon {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .overlay-title {
+      font-size: .84rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin: 0;
+    }
+
+    .overlay-sub {
+      font-size: .73rem;
+      color: #999;
+      margin: 0;
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+      margin-left: auto;
+    }
+
+    .live-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulse 1.4s infinite;
+    }
+
+    .live-text { font-size: .73rem; font-weight: 600; color: #22c55e; }
+
+    /* ── Features ────────────────────────── */
+    #features { padding: 6rem 0; background: #fff; }
+
+    .feature-card {
+      background: #fff;
+      border: 1px solid #f0f4f8;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      height: 100%;
+      box-shadow: var(--shadow-sm);
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      cursor: default;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-blue);
+      border-color: rgba(74,144,226,.2);
+    }
+
+    .feature-icon {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .feature-title {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: .55rem;
+    }
+
+    .feature-desc {
+      font-size: .875rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ── Pricing ─────────────────────────── */
+    #pricing {
+      padding: 6rem 0;
+      background: linear-gradient(180deg, #f8faff 0%, #fff 100%);
+    }
+
+    .pricing-card {
+      border-radius: var(--radius-xl);
+      padding: 2.25rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform .25s;
+    }
+
+    .pricing-card:hover { transform: translateY(-5px); }
+
+    /* Default (non-highlighted) */
+    .pricing-card.default {
+      background: #fff;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Highlighted */
+    .pricing-card.highlighted {
+      background: linear-gradient(145deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border: none;
+      box-shadow: var(--shadow-blue-lg);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fbbf24;
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      padding: .3rem .9rem;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(251,191,36,.4);
+    }
+
+    .plan-name {
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+
+    .plan-price {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .plan-period { font-size: .9rem; font-weight: 400; }
+
+    .plan-desc {
+      font-size: .875rem;
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .plan-features { list-style: none; padding: 0; margin: 0 0 2rem; flex: 1; }
+
+    .plan-features li {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-size: .875rem;
+      margin-bottom: .7rem;
+    }
+
+    .check-icon {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: .65rem;
+    }
+
+    /* Default card colors */
+    .default .plan-name     { color: #999; }
+    .default .plan-price    { color: var(--dark); }
+    .default .plan-period   { color: #aaa; }
+    .default .plan-desc     { color: var(--text-muted); border-bottom: 1px solid #f0f0f0; }
+    .default .plan-features li { color: #555; }
+    .default .check-icon    { background: var(--primary-light); color: var(--primary); }
+
+    /* Highlighted card colors */
+    .highlighted .plan-name   { color: rgba(255,255,255,.75); }
+    .highlighted .plan-price  { color: #fff; }
+    .highlighted .plan-period { color: rgba(255,255,255,.65); }
+    .highlighted .plan-desc   { color: rgba(255,255,255,.7); border-bottom: 1px solid rgba(255,255,255,.2); }
+    .highlighted .plan-features li { color: rgba(255,255,255,.9); }
+    .highlighted .check-icon  { background: rgba(255,255,255,.2); color: #fff; }
+
+    /* Plan buttons */
+    .btn-plan-default {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      font-weight: 600;
+      font-size: .9rem;
+      padding: .85rem 1.5rem;
+      border-radius: 14px;
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(74,144,226,.3);
+      transition: opacity .2s, transform .2s;
+      cursor: pointer;
+    }
+
+    .btn-plan-default:hover { opacity: .9; transform: scale(1.02); }
+
+    .btn-plan-highlighted {
+      background: #fff;
+      color: var(--primary);
+      border: none;
+      font-weight: 700;
+      font-size: .9rem;
+      padding: .85rem 1.5rem;
+      border-radius: 14px;
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(0,0,0,.12);
+      transition: opacity .2s, transform .2s;
+      cursor: pointer;
+    }
+
+    .btn-plan-highlighted:hover { opacity: .92; transform: scale(1.02); }
+
+    /* ── Contact ─────────────────────────── */
+    #contact { padding: 6rem 0; background: #fff; }
+
+    .contact-info-card {
+      background: linear-gradient(145deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      height: 100%;
+      box-shadow: var(--shadow-blue-lg);
+      color: #fff;
+    }
+
+    .contact-info-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: .35rem;
+    }
+
+    .contact-info-sub {
+      font-size: .875rem;
+      color: rgba(255,255,255,.7);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-icon {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .contact-label {
+      font-size: .78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.65);
+      margin: 0;
+    }
+
+    .contact-value {
+      font-size: .9rem;
+      font-weight: 500;
+      color: #fff;
+      margin: 0;
+    }
+
+    /* Form card */
+    .contact-form-card {
+      background: #fff;
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      border: 1px solid #f0f4f8;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .form-label {
+      font-size: .85rem;
+      font-weight: 500;
+      color: #444;
+      margin-bottom: .4rem;
+    }
+
+    .form-control {
+      border-radius: 12px;
+      border: 1.5px solid #e5e7eb;
+      background: #fafafa;
+      font-family: 'Poppins', sans-serif;
+      font-size: .9rem;
+      padding: .75rem 1rem;
+      color: #333;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(74,144,226,.15);
+      background: #fff;
+      outline: none;
+    }
+
+    .form-control::placeholder { color: #bbb; }
+
+    .btn-submit {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: .95rem;
+      padding: .85rem 1.5rem;
+      border-radius: 14px;
+      border: none;
+      width: 100%;
+      box-shadow: 0 8px 25px var(--primary-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      transition: opacity .2s, transform .2s;
+      cursor: pointer;
+    }
+
+    .btn-submit:hover { opacity: .9; transform: translateY(-1px); }
+
+    /* Form success */
+    .form-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+
+    .form-success.active { display: flex; }
+
+    .success-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: rgba(5,150,105,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .success-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: .4rem;
+    }
+
+    .success-sub { font-size: .9rem; color: #999; }
+
+    /* ── Footer ──────────────────────────── */
+    #footer {
+      background: var(--dark-footer);
+      color: rgba(255,255,255,.45);
+    }
+
+    /* CTA Banner */
+    .footer-cta {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem;
+      box-shadow: var(--shadow-blue-lg);
+      transform: translateY(-50%);
+      margin-bottom: -2rem;
+    }
+
+    .footer-cta-title {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: .4rem;
+    }
+
+    .footer-cta-sub {
+      font-size: .95rem;
+      color: rgba(255,255,255,.72);
+      margin: 0;
+    }
+
+    .btn-footer-cta {
+      background: #fff;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: .9rem;
+      padding: .85rem 1.8rem;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,.15);
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      transition: transform .2s, box-shadow .2s;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-footer-cta:hover {
+      transform: scale(1.04);
+      box-shadow: 0 6px 25px rgba(0,0,0,.2);
+      color: var(--primary);
+    }
+
+    /* Footer body */
+    .footer-body { padding: 2rem 0 3rem; }
+
+    .footer-brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: 1rem;
+      text-decoration: none;
+    }
+
+    .footer-brand-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-brand-icon i { color: #fff; font-size: .85rem; }
+
+    .footer-desc {
+      font-size: .86rem;
+      color: rgba(255,255,255,.45);
+      line-height: 1.75;
+      max-width: 270px;
+      margin-bottom: 1.25rem;
+    }
+
+    .social-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.08);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.65);
+      font-size: .95rem;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+
+    .social-icon:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: scale(1.12);
+    }
+
+    .footer-heading {
+      font-size: .84rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: .04em;
+      margin-bottom: 1.1rem;
+    }
+
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+
+    .footer-links li { margin-bottom: .6rem; }
+
+    .footer-links a {
+      font-size: .84rem;
+      color: rgba(255,255,255,.42);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover { color: var(--primary); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 1.25rem 0 1.5rem;
+    }
+
+    .footer-copy {
+      font-size: .8rem;
+      color: rgba(255,255,255,.28);
+      margin: 0;
+    }
+
+    .footer-legal a {
+      font-size: .8rem;
+      color: rgba(255,255,255,.28);
+      text-decoration: none;
+      transition: color .2s;
+      margin-left: 1.25rem;
+    }
+
+    .footer-legal a:hover { color: var(--primary); }
+
+    /* ── Responsive Tweaks ───────────────── */
+    @media (max-width: 991.98px) {
+      .hero-inner { padding: 4rem 0; }
+      .hero-card img { height: 300px; }
+      .hero-img-wrap { margin-top: 3rem; }
+      .footer-cta { padding: 2.5rem; }
+    }
+
+    @media (max-width: 767.98px) {
+      .hero-stats { gap: 1.25rem; }
+      .footer-cta { text-align: center; }
+      .footer-cta .d-flex { flex-direction: column; align-items: center; gap: 1.25rem !important; }
+      .footer-bottom .d-flex { flex-direction: column; align-items: center; gap: .75rem; text-align: center; }
+      .footer-legal a { margin-left: .75rem; }
+      .pricing-card { margin-bottom: 2rem; }
+    }
+
+    @media (max-width: 575.98px) {
+      .hero-title { font-size: 2rem; }
+      .hero-btn-group { flex-direction: column; gap: .75rem; }
+      .hero-btn-group a { width: 100%; justify-content: center; }
+      .contact-form-card { padding: 1.75rem 1.25rem; }
+      .contact-info-card { padding: 2rem 1.5rem; }
+      .footer-cta { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════════════════════════ -->
+  <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+
+      <!-- Brand / Logo -->
+      <a class="navbar-brand" href="#home">
+        <div class="brand-icon">
+          <i class="bi bi-lightning-fill"></i>
+        </div>
+        SmartBin <span style="color: var(--primary);">&nbsp;AI</span>
+      </a>
+
+      <!-- Mobile toggler -->
+      <button
+        class="navbar-toggler border-0 shadow-none"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navMenu"
+        aria-controls="navMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        style="color: #555;"
+      >
+        <i class="bi bi-list fs-4"></i>
+      </button>
+
+      <!-- Nav items -->
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 py-2 py-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <a href="#contact" class="btn-nav-cta">Get Started</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════════════════════ -->
+  <section id="home">
+    <div class="container">
+      <div class="row align-items-center hero-inner">
+
+        <!-- Left: copy — 6 cols -->
+        <div class="col-12 col-lg-6">
+
+          <!-- Badge -->
+          <div class="hero-badge">
+            <span class="dot"></span>
+            AI-Powered Waste Management
+          </div>
+
+          <!-- Headline -->
+          <h1 class="hero-title">
+            Smart Waste<br>
+            <span>Management</span><br>
+            with AI
+          </h1>
+
+          <!-- Description -->
+          <p class="hero-desc">
+            SmartBin AI revolutionizes waste sorting and collection with cutting-edge
+            artificial intelligence. Reduce waste, lower costs, and build a cleaner
+            future — all in one smart solution.
+          </p>
+
+          <!-- Stats -->
+          <div class="hero-stats">
+            <div>
+              <div class="hero-stat-value">98%</div>
+              <div class="hero-stat-label">Sort Accuracy</div>
+            </div>
+            <div>
+              <div class="hero-stat-value">3x</div>
+              <div class="hero-stat-label">Faster Collection</div>
+            </div>
+            <div>
+              <div class="hero-stat-value">40%</div>
+              <div class="hero-stat-label">Cost Reduction</div>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="d-flex flex-wrap gap-3 hero-btn-group">
+            <a href="#contact" class="btn-primary-hero">
+              Try Now <i class="bi bi-arrow-right"></i>
+            </a>
+            <a href="#features" class="btn-secondary-hero">
+              <i class="bi bi-play-fill"></i> Learn More
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: image — 6 cols -->
+        <div class="col-12 col-lg-6">
+          <div class="hero-img-wrap">
+            <!-- Blobs -->
+            <div class="hero-blob hero-blob-1"></div>
+            <div class="hero-blob hero-blob-2"></div>
+
+            <!-- Image card -->
+            <div class="hero-card">
+              <img
+                src="https://images.unsplash.com/photo-1591680413056-203837ddcc56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900"
+                alt="SmartBin AI in action"
+              />
+              <!-- Overlay -->
+              <div class="hero-overlay-card">
+                <div class="overlay-icon">🤖</div>
+                <div>
+                  <p class="overlay-title">AI Detection Active</p>
+                  <p class="overlay-sub">Real-time waste classification</p>
+                </div>
+                <div class="live-badge">
+                  <span class="live-dot"></span>
+                  <span class="live-text">Live</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       FEATURES SECTION
+  ═══════════════════════════════════════════════════════ -->
+  <section id="features">
+    <div class="container">
+
+      <!-- Section header -->
+      <div class="row justify-content-center text-center mb-5">
+        <div class="col-12 col-md-8 col-lg-6">
+          <span class="section-badge mb-3">Why Choose Us</span>
+          <h2 class="section-title">Key <span>Features</span></h2>
+          <p class="section-subtitle mt-3">
+            Everything you need to transform your waste management into a smarter,
+            cleaner, and more sustainable operation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature cards — 3 per row on lg, 2 on md, 1 on sm -->
+      <div class="row g-4">
+
+        <!-- Card 1 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(74,144,226,.1);">
+              <i class="bi bi-cpu-fill" style="color: #4A90E2;"></i>
+            </div>
+            <h3 class="feature-title">AI-Powered Sorting</h3>
+            <p class="feature-desc">
+              Our deep learning models identify and sort waste materials with 98%
+              accuracy in real-time, eliminating human error completely.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(124,58,237,.1);">
+              <i class="bi bi-bar-chart-fill" style="color: #7c3aed;"></i>
+            </div>
+            <h3 class="feature-title">Smart Analytics</h3>
+            <p class="feature-desc">
+              Get detailed insights and real-time dashboards on waste generation
+              patterns, helping you make data-driven decisions.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(5,150,105,.1);">
+              <i class="bi bi-tree-fill" style="color: #059669;"></i>
+            </div>
+            <h3 class="feature-title">Eco-Friendly Impact</h3>
+            <p class="feature-desc">
+              Track your carbon footprint reduction and environmental impact.
+              Our platform helps reduce landfill waste by up to 60%.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(217,119,6,.1);">
+              <i class="bi bi-bell-fill" style="color: #d97706;"></i>
+            </div>
+            <h3 class="feature-title">Smart Alerts</h3>
+            <p class="feature-desc">
+              Receive instant notifications when bins are full or need attention,
+              optimizing collection schedules automatically.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(220,38,38,.1);">
+              <i class="bi bi-shield-fill-check" style="color: #dc2626;"></i>
+            </div>
+            <h3 class="feature-title">Secure &amp; Reliable</h3>
+            <p class="feature-desc">
+              Enterprise-grade security with 99.9% uptime guarantee. Your data
+              is encrypted and protected at all times.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(8,145,178,.1);">
+              <i class="bi bi-truck" style="color: #0891b2;"></i>
+            </div>
+            <h3 class="feature-title">Route Optimization</h3>
+            <p class="feature-desc">
+              AI-optimized collection routes reduce fuel consumption by 35% and
+              ensure timely waste pickup across all locations.
+            </p>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       PRICING SECTION
+  ═══════════════════════════════════════════════════════ -->
+  <section id="pricing">
+    <div class="container">
+
+      <!-- Section header -->
+      <div class="row justify-content-center text-center mb-5">
+        <div class="col-12 col-md-8 col-lg-6">
+          <span class="section-badge mb-3">Transparent Pricing</span>
+          <h2 class="section-title">Pricing <span>Plans</span></h2>
+          <p class="section-subtitle mt-3">
+            Choose the plan that fits your needs. All plans include a 14-day free trial.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pricing cards -->
+      <div class="row g-4 align-items-start justify-content-center">
+
+        <!-- Basic -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="pricing-card default">
+            <p class="plan-name">Basic</p>
+            <div class="d-flex align-items-end gap-1 mt-2 mb-3">
+              <span class="plan-price">$29</span>
+              <span class="plan-period" style="margin-bottom:8px;">/month</span>
+            </div>
+            <p class="plan-desc">
+              Perfect for small businesses getting started with smart waste management.
+            </p>
+            <ul class="plan-features">
+              <li>
+                <span class="check-icon"><i class="bi bi-check2" style="font-weight:900;"></i></span>
+                Up to 5 SmartBin units
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Basic AI sorting (85% accuracy)
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Monthly analytics report
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Email support
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Mobile app access
+              </li>
+            </ul>
+            <button class="btn-plan-default">Get Started</button>
+          </div>
+        </div>
+
+        <!-- Standard (highlighted) -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="pricing-card highlighted">
+            <!-- Badge -->
+            <div class="pricing-badge">
+              <i class="bi bi-lightning-fill" style="font-size:.7rem;"></i>
+              Most Popular
+            </div>
+
+            <p class="plan-name">Standard</p>
+            <div class="d-flex align-items-end gap-1 mt-2 mb-3">
+              <span class="plan-price">$79</span>
+              <span class="plan-period" style="margin-bottom:8px;">/month</span>
+            </div>
+            <p class="plan-desc">
+              Ideal for growing companies that need powerful AI-driven waste solutions.
+            </p>
+            <ul class="plan-features">
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Up to 25 SmartBin units
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Advanced AI sorting (98% accuracy)
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Real-time analytics dashboard
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Smart alerts &amp; notifications
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Route optimization
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Priority support
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Mobile + web app
+              </li>
+            </ul>
+            <button class="btn-plan-highlighted">Start Free Trial</button>
+          </div>
+        </div>
+
+        <!-- Premium -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="pricing-card default">
+            <p class="plan-name">Premium</p>
+            <div class="d-flex align-items-end gap-1 mt-2 mb-3">
+              <span class="plan-price">$199</span>
+              <span class="plan-period" style="margin-bottom:8px;">/month</span>
+            </div>
+            <p class="plan-desc">
+              Full-scale enterprise solution with unlimited capabilities and dedicated support.
+            </p>
+            <ul class="plan-features">
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Unlimited SmartBin units
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Enterprise AI (98%+ accuracy)
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Advanced analytics &amp; reports
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Real-time alerts &amp; notifications
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Full route optimization
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                API &amp; integrations access
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                24/7 dedicated support
+              </li>
+              <li>
+                <span class="check-icon"><i class="bi bi-check2"></i></span>
+                Custom dashboard
+              </li>
+            </ul>
+            <button class="btn-plan-default">Contact Sales</button>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       CONTACT SECTION
+  ═══════════════════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="container">
+
+      <!-- Section header -->
+      <div class="row justify-content-center text-center mb-5">
+        <div class="col-12 col-md-8 col-lg-6">
+          <span class="section-badge mb-3">Get In Touch</span>
+          <h2 class="section-title">Contact <span>Us</span></h2>
+          <p class="section-subtitle mt-3">
+            Have questions or want a demo? Our team is ready to help you get started.
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4 align-items-stretch">
+
+        <!-- Info card — 4 cols on lg -->
+        <div class="col-12 col-lg-4">
+          <div class="contact-info-card h-100">
+            <h3 class="contact-info-title">Let's Talk</h3>
+            <p class="contact-info-sub">
+              We're here to help you build a smarter, cleaner future.
+              Reach out anytime!
+            </p>
+
+            <div class="contact-row">
+              <div class="contact-icon"><i class="bi bi-envelope-fill"></i></div>
+              <div>
+                <p class="contact-label">Email Us</p>
+                <p class="contact-value">hello@smartbinai.com</p>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-icon"><i class="bi bi-telephone-fill"></i></div>
+              <div>
+                <p class="contact-label">Call Us</p>
+                <p class="contact-value">+1 (800) 123-4567</p>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
+              <div>
+                <p class="contact-label">Visit Us</p>
+                <p class="contact-value">123 Green St, San Francisco, CA</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form — 8 cols on lg -->
+        <div class="col-12 col-lg-8">
+          <div class="contact-form-card h-100">
+
+            <!-- Success state (hidden by default) -->
+            <div class="form-success" id="formSuccess">
+              <div class="success-icon">✅</div>
+              <h4 class="success-title">Message Sent!</h4>
+              <p class="success-sub">Thanks for reaching out. We'll get back to you within 24 hours.</p>
+            </div>
+
+            <!-- Form -->
+            <form id="contactForm" novalidate>
+              <div class="row g-3 mb-3">
+                <!-- Name -->
+                <div class="col-12 col-md-6">
+                  <label for="inputName" class="form-label">
+                    Full Name <span style="color: var(--primary);">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputName"
+                    name="name"
+                    placeholder="John Doe"
+                    required
+                  />
+                  <div class="invalid-feedback">Please enter your name.</div>
+                </div>
+                <!-- Email -->
+                <div class="col-12 col-md-6">
+                  <label for="inputEmail" class="form-label">
+                    Email Address <span style="color: var(--primary);">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="inputEmail"
+                    name="email"
+                    placeholder="john@company.com"
+                    required
+                  />
+                  <div class="invalid-feedback">Please enter a valid email.</div>
+                </div>
+              </div>
+
+              <!-- Message -->
+              <div class="mb-4">
+                <label for="inputMessage" class="form-label">
+                  Message <span style="color: var(--primary);">*</span>
+                </label>
+                <textarea
+                  class="form-control"
+                  id="inputMessage"
+                  name="message"
+                  rows="5"
+                  placeholder="Tell us about your waste management needs..."
+                  required
+                ></textarea>
+                <div class="invalid-feedback">Please enter a message.</div>
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" class="btn-submit">
+                Send Message <i class="bi bi-send-fill"></i>
+              </button>
+            </form>
+
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════ -->
+  <footer id="footer">
+
+    <!-- CTA Banner (overlaps into footer) -->
+    <div class="container">
+      <div class="footer-cta">
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-4">
+          <div>
+            <h3 class="footer-cta-title">Ready to go green with AI?</h3>
+            <p class="footer-cta-sub">Start your 14-day free trial. No credit card required.</p>
+          </div>
+          <a href="#contact" class="btn-footer-cta">
+            Get Started Free <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer body -->
+    <div class="container footer-body">
+      <div class="row g-5">
+
+        <!-- Brand col — 4 cols -->
+        <div class="col-12 col-md-12 col-lg-4">
+          <a class="footer-brand" href="#home">
+            <div class="footer-brand-icon">
+              <i class="bi bi-lightning-fill"></i>
+            </div>
+            SmartBin <span style="color: var(--primary);">&nbsp;AI</span>
+          </a>
+          <p class="footer-desc">
+            Transforming waste management with the power of artificial intelligence.
+            Smarter bins. Cleaner cities. Better future.
+          </p>
+          <!-- Socials -->
+          <div class="d-flex gap-2">
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <i class="bi bi-twitter-x"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="LinkedIn">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="GitHub">
+              <i class="bi bi-github"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <i class="bi bi-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links — 8 cols split into 4 -->
+        <div class="col-12 col-md-12 col-lg-8">
+          <div class="row g-4">
+
+            <div class="col-6 col-sm-3">
+              <h4 class="footer-heading">Product</h4>
+              <ul class="footer-links">
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Case Studies</a></li>
+                <li><a href="#">Changelog</a></li>
+                <li><a href="#">Roadmap</a></li>
+              </ul>
+            </div>
+
+            <div class="col-6 col-sm-3">
+              <h4 class="footer-heading">Company</h4>
+              <ul class="footer-links">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">Partners</a></li>
+              </ul>
+            </div>
+
+            <div class="col-6 col-sm-3">
+              <h4 class="footer-heading">Support</h4>
+              <ul class="footer-links">
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">API Reference</a></li>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+
+            <div class="col-6 col-sm-3">
+              <h4 class="footer-heading">Legal</h4>
+              <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+                <li><a href="#">GDPR</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /row -->
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2">
+          <p class="footer-copy">
+            © 2026 SmartBin AI. All rights reserved. Built with 💙 for the planet.
+          </p>
+          <div class="footer-legal">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Cookies</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /container -->
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       Bootstrap 5 JS Bundle
+  ═══════════════════════════════════════════════════════ -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CUSTOM JS — Interactive behaviour
+  ═══════════════════════════════════════════════════════ -->
+  <script>
+    /* ── 1. Navbar: add scrolled shadow ────────────────── */
+    const nav = document.getElementById('mainNav');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        nav.style.boxShadow = '0 4px 28px rgba(74,144,226,.14)';
+      } else {
+        nav.style.boxShadow = '0 2px 20px rgba(74,144,226,.08)';
+      }
+    });
+
+    /* ── 2. Navbar: close on mobile link click ─────────── */
+    document.querySelectorAll('#navMenu .nav-link, #navMenu .btn-nav-cta')
+      .forEach(link => {
+        link.addEventListener('click', () => {
+          const bsCollapse = bootstrap.Collapse.getInstance(
+            document.getElementById('navMenu')
+          );
+          if (bsCollapse) bsCollapse.hide();
+        });
+      });
+
+    /* ── 3. Navbar active link highlight on scroll ─────── */
+    const sections = document.querySelectorAll('section[id], footer[id]');
+    const navLinks  = document.querySelectorAll('#navMenu .nav-link');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.style.color = '#555';
+            if (link.getAttribute('href') === '#' + entry.target.id) {
+              link.style.color = 'var(--primary)';
+            }
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => observer.observe(s));
+
+    /* ── 4. Contact form: validation + success state ───── */
+    const form        = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (!form.checkValidity()) {
+        form.classList.add('was-validated');
+        return;
+      }
+
+      // Show success state
+      form.style.display    = 'none';
+      formSuccess.classList.add('active');
+
+      // Reset after 4 s
+      setTimeout(() => {
+        form.reset();
+        form.classList.remove('was-validated');
+        form.style.display    = '';
+        formSuccess.classList.remove('active');
+      }, 4000);
+    });
+
+    /* ── 5. Smooth-scroll for all anchor links ─────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    /* ── 6. Feature cards: staggered entrance animation ── */
+    const featureCards = document.querySelectorAll('.feature-card');
+
+    const fadeObserver = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity  = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, i * 80);
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    featureCards.forEach(card => {
+      card.style.opacity   = '0';
+      card.style.transform = 'translateY(24px)';
+      card.style.transition = 'opacity .45s ease, transform .45s ease, box-shadow .25s, border-color .25s';
+      fadeObserver.observe(card);
+    });
+
+    /* ── 7. Pricing cards: entrance animation ───────────── */
+    const pricingCards = document.querySelectorAll('.pricing-card');
+
+    const priceObserver = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity  = '1';
+            entry.target.style.transform = entry.target.classList.contains('highlighted')
+              ? 'translateY(0) scale(1.02)'
+              : 'translateY(0)';
+          }, i * 100);
+          priceObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    pricingCards.forEach((card, i) => {
+      card.style.opacity    = '0';
+      card.style.transform  = card.classList.contains('highlighted')
+        ? 'translateY(28px) scale(1.02)'
+        : 'translateY(28px)';
+      card.style.transition = 'opacity .5s ease, transform .5s ease';
+      priceObserver.observe(card);
+    });
+  </script>
+
+</body>
+</html>
